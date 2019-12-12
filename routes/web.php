@@ -15,12 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/random', 'CounterController@randomView');
-
 Route::post('/random', 'CounterController@random');
-
-
+Route::get('/counter', 'SimpleCounter@countView');
+Route::post('/counter', 'SimpleCounter@count');
 
 Route::get('/about','AboutController@index');
 
