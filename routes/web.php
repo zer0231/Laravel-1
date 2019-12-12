@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/random', 'CounterController@randomView');
+
+Route::post('/random', 'CounterController@random');
+
+
+
 Route::get('/about','AboutController@index');
 
 // Route::get('/about',function(){
