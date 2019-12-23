@@ -22,6 +22,10 @@ Route::post('/counter', 'SimpleCounter@count');
 
 Route::get('/about','AboutController@index');
 
+Route::get('/student-form/create', 'StudentController@create');
+Route::post('/student-form/create', 'StudentController@store');
+Route::get('/student-list', 'StudentController@index');
+
 // Route::get('/about',function(){
 //     return view('about');
 // });
