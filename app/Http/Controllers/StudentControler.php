@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 use App\Students;
 class StudentController extends Controller
 {
@@ -9,9 +11,20 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function validator($student)
+    {
+        return Validator::make($student,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'phone' => 'required|string|max:255'
+        ]);
+    }
+
+
     public function index()
     {
-        $studentList = Students::get();
+        $studentList = Students::where('status',1)->get();
         return view('student-list')->with('students',$studentList);
     }
     /**
@@ -31,6 +44,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
         Students::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -58,7 +72,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Students::find($id);
+        return view('student-update')->with('student', $student);
     }
     /**
      * Update the specified resource in storage.
@@ -69,7 +84,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validator($request->all())->validate();
+        Students::where('id', $id)
+            ->update([
+                       'name' => $request->name,
+                        'email' => $request->email,
+                        'phone' => $request->phone,
+                        'status' => 1
+                   ]);
+        return redirect('/student-list');
     }
     /**
      * Remove the specified resource from storage.
@@ -78,7 +101,11 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {//sets the status of given id to 0
+        $student = Students::find($id);
+        $student->status=0;
+        $student->save();
+        return redirect('/student-list');
+        //return redirect('/student-list');
     }
 }

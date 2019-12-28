@@ -26,6 +26,10 @@ Route::get('/student-form/create', 'StudentController@create');
 Route::post('/student-form/create', 'StudentController@store');
 Route::get('/student-list', 'StudentController@index');
 
+route::get('/student/remove/{id}','StudentController@destroy');
+
+Route::get('/student/update/{id}', 'StudentController@edit');
+Route::post('/student/update/{id}', 'StudentController@update');
 // Route::get('/about',function(){
 //     return view('about');
 // });

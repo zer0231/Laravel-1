@@ -25,36 +25,36 @@
   @csrf
   <div>
     <label for="name">Name</label>
-    <input type="text" placeholder="Name" id="name" name="name">
-    <!-- @if ($errors->has('name'))
+    <input type="text" placeholder="Name" id="name" name="name" value="{{old('name')}}">
+    @if ($errors->has('name'))
     <span class="invalid-feedback">
       <strong>{{ $errors->first('name') }}</strong>
     </span>
-    @endif -->
+    @endif 
 </div>
 
 ​
 
 <div>
     <label for="email">Email Address</label>
-    <input type="email" placeholder="Email Address" id="email" name="email">
-    <!-- @if ($errors->has('email'))
+    <input type="email" placeholder="Email Address" id="email" name="email" value="{{old('email')}}">
+     @if ($errors->has('email'))
     <span class="invalid-feedback">
       <strong>{{ $errors->first('email') }}</strong>
     </span>
-    @endif -->
+    @endif 
 </div>
 
 ​
 
 <div>
     <label for="phone">Phone Number</label>
-    <input type="text" placeholder="Phone Number" id="phone" name="phone">
-    <!-- @if ($errors->has('phone'))
+    <input type="text" placeholder="Phone Number" id="phone" name="phone" value="{{old('phone')}}">
+    @if ($errors->has('phone'))
     <span class="invalid-feedback">
     <strong>{{ $errors->first('phone') }}</strong>
     </span>
-    @endif -->
+    @endif
 </div>
 
 <button>Add</button>
