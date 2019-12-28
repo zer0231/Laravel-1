@@ -1,16 +1,6 @@
-<style>
-table {
-  border-spacing: 0px;
-  border: 1px solid black;
-}
-​
-table tr th,
-td {
-  cell-spacing: 0;
-  padding: 10px;
-  border: 1px solid black;
-}
-</style>
+@extends('layouts.app')
+@section('contents')
+
 
 <h1>Student List</h1>
 <div style="margin:20px 0;">
@@ -65,7 +55,6 @@ td {
 </tr>
 @endif
 </table>
-
 <script>
 function confirmDelete(id) {
   let del = confirm();
@@ -74,3 +63,4 @@ function confirmDelete(id) {
   }
 }
 </script>
+@endsection
